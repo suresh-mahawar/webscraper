@@ -1,7 +1,7 @@
 
 var Hapi = require('hapi'),
     Routes = require('./routes'),
-    // Db = require('./config/db'),
+    Db = require('./config/db'),
     Moment = require('moment'),
     Config = require('./config/config');
 

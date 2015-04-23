@@ -4,11 +4,11 @@ var internals = {};
 
 // Get session information endpoint
 
-// exports.get = {
-//   handler: {
-//     directory: {
-//       path: '../client/src',
-//       index: true
-//     } 
-//   }
-// }
+exports.get = {
+  handler: {
+    directory: {
+      path: '../client/src',
+      index: true
+    } 
+  }
+}
