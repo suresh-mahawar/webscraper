@@ -6,13 +6,13 @@ var app = angular
 	.config(function($routeProvider, growlProvider) {
 		growlProvider.globalTimeToLive(5000);
 	    $routeProvider
-				// .when('/',
-				// 	 {templateUrl: 'app/index.html'},
-				// 	 {controller: 'userCtrl.js'}
-				// 	)
-				// .otherwise({redirectTo: '/'})
-
 				.when('/',
+					 {templateUrl: 'app/index.html'},
+					 {controller: 'userCtrl.js'}
+					)
+				.otherwise({redirectTo: '/'})
+
+				.when('/Scraper',
 					 {templateUrl: 'app/scraper.html'},
 					 {controller: 'scraperCtrl.js'}
 					)

@@ -23,7 +23,7 @@ exports.extract=function(sitVal,html){
 
 		//determine whether details page or not. then pushing selector to json object
 		if(sitVal.pid){
-			sel.img="$(\".productImage.current\").attr(\"src\")";
+			sel.img="$(\".productImage.current\").attr(\"data-src\")";
 			sel.title="$(\".title\").text()";
 			sel.rating="$(\".fk-stars\").attr(\"title\")";
 			sel.price="$(\".pricing .price\").text()";

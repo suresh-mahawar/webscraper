@@ -40,6 +40,7 @@ exports.getdata = {
             if(res.specialprice) result.specialprice=eval(res.specialprice);
             result.discount=eval(res.discount); 
             result.url= req.payload.productpage;
+            // result.html=html;
             reply(result);
            
           }  

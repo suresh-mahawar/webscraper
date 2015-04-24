@@ -7,9 +7,9 @@ var formApp = angular.module('formApp', [])
         
     });
 
-app.controller('scraperCtrl', [ '$scope', '$http','$location', 'growl',
+app.controller('scraperCtrl', [ '$scope', '$http','$location', 'growl','$sce',
 
-	function($scope, $http, $location,  growl){		
+	function($scope, $http, $location,  growl, $sce){		
 		var _scope = {};
 		$scope.submit = function(){	
 			$scope.submitted=true;
@@ -30,9 +30,20 @@ app.controller('scraperCtrl', [ '$scope', '$http','$location', 'growl',
 		}
 		var initTable = function() {
 			var data=_scope.productList;
-			$scope.products=data;			
-			console.log($scope.products);		
+			$scope.products=data;
+			$scope.thisCanBeusedInsideNgBindHtml=$sce.trustAsResourceUrl(data.url);	
+			
+			
+        	
+			// var doc = document.getElementById('FileFrame').contentWindow.document;
+			// $scope.thisCanBeusedInsideNgBindHtml = $sce.trustAsHtml(data.html);	
+			// var doc=$("iframe").contentWindow.document;
+			// doc.open();
+			// doc.writeln($sce.trustAsHtml(data.html));
+			// doc.close();
+			
         }
+        
 
 	}]
 )

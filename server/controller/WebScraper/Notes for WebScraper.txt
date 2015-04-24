@@ -4,7 +4,7 @@ Making generic selector for flipkart to extract data.
 define selectors in seperate json object, make generic JSON variable( Like if I give flipkart it need to pick selectors for that particular site from the generic JSON variable.).
 make current url as site to view json data as output.(create a textbox and button. in the textbox we will provide url and ask to select data on button click.)
 make a view for the resulted json data(like show description, image, linkUrl, price).
-show reponse html in the page(creating proxy)rendered.(Left side of the page show the rendered body of the given url in textbox. right side show product details like description, image, linkUrl, price offer etc).
+show reponse html in the page(creating proxy)rendered.(Left side of the page show the rendered body of the given url. right side show product details like description, image, linkUrl, price offer etc).
 For understanding purpose(Future Purpose):
 If the user has given any other url apart from our json variable holding values, we need to ask him to provide the value name in the text box later ask him select from the product site html rendered in the left side. after giving selection configuration to db. so that next the user gives the same url we can directly load the details instead of re doing the same.3
 
