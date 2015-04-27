@@ -13,20 +13,27 @@ exports.getdata = {
 
         //loading html of requested url.
 
-        request({url:req.payload.productpage,headers:{'User-Agent':'Mozilla/5.0 (Windows; U; Windows NT 6.1; en-US) AppleWebKit/533.4 (KHTML, like Gecko) Chrome/5.0.375.125 Safari/533.4'}}, function (error, response, html) {
+        request({url:req.payload.productpage,headers:{'User-Agent':'Mozilla/5.0 (Windows; U; Windows NT 6.1; en-US) AppleWebKit/533.4 (KHTML, like Gecko) Chrome/5.0.375.125 Safari/533.4',
+                'x-frame-options':'GOFORIT'}}, function (error, response, html) {
            
 
           if (!error && response.statusCode == 200) {
+
             var url_parts = url.parse(req.payload.productpage, true);
             var query = url_parts.query;
-            var pid=false; var sid=false;
+            var pid=false; var qid=false;var uq=false;
             //requesting for query string and identifying type of page.
+            //qid for amazon
+            //pid for flipkart
+            //uq for myntra
             if(query.pid) pid=true;
-            if(query.sid) sid=true;
-            var details={};
-            details.id="flipkart";
-            details.sid=sid;
+            else if(query.qid) qid=true;
+            else if(query.q&&query.p) uq=true;
+            var details={}; 
+            details.uq=uq;
+            details.qid=qid;            
             details.pid=pid;
+
             var res=sel.extract(details,html);   
             //Cheerio loads jquery selector for input html          
             var $ = cheerio.load(html);  

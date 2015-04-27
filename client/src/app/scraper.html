@@ -26,18 +26,18 @@
     <tr>
     <th>Image</th>
     <th>Title</th>
-    <th>Rating</th>
-    <th>Price</th>
-    <th>Selling Price</th>
-    <th>Discount</th>
+    <th ng-hide="!products.rating">Rating</th>
+    <th ng-hide="!products.price">Price</th>
+    <th ng-hide="!products.sellingprice">Selling Price</th>
+    <th ng-hide="!products.discount">Discount</th>
     </tr>
     <tr>
         <td data-title="'Image'"><img ng-src="{{products.img}}" width="150px" /></td>
         <td data-title="'Title'">{{products.title}}</td>
-        <td data-title="'Rating'">{{products.rating}}</td>
-        <td data-title="'Price'">{{products.price}}</td>
-        <td data-title="'Selling Price'">{{products.sellingprice}}</td>
-        <td data-title="'Discount'">{{products.discount}}</td>
+        <td data-title="'Rating'" ng-hide="!products.rating">{{products.rating}}</td>
+        <td data-title="'Price'" ng-hide="!products.price">{{products.price}}</td>
+        <td data-title="'Selling Price'" ng-hide="!products.sellingprice">{{products.sellingprice}}</td>
+        <td data-title="'Discount'" ng-hide="!products.discount">{{products.discount}}</td>
     </tr>
 </table>
 <!-- <div class="row" ng-show="submitted"><h3>Product Details:</h3></div>   -->
