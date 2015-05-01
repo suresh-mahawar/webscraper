@@ -5,18 +5,34 @@ exports.Mapper=function(html,url){
  	var domainName=getDomain(url);
 	var selector=JsonVariable(domainName);
 
-	var result={};
+	var result={}; var arr=[];
 	for(j in selector){
 		
 		if(selector[j]["text"]){
-			result[selector[j]["property"]]=$(selector[j]["selector"]).text();
+			var value=$(selector[j]["selector"]).text();
+			if(value)
+			result[selector[j]["property"]]=value;
+		}
+		else if(selector[j]["property"]=="img"){
+			var img=$(selector[j]["selector"]).map(function(){
+						if(this.attribs[selector[j]["attr"]])
+	                    arr.push(this.attribs[selector[j]["attr"]]);
+	                	else
+	                	arr.push(this.attribs["src"]);
+	                    console.log("===========",this.attribs);
+                   	}).get();			
+			result[selector[j]["property"]]=arr;
 		}
 		else{
-			result[selector[j]["property"]]=$(selector[j]["selector"]).attr(selector[j]["attr"]);
+			var value=$(selector[j]["selector"]).attr(selector[j]["attr"])
+			if(value)
+			result[selector[j]["property"]]=value;
 			
 		}
 	}
+
 	return result;
+
 }
 
 function JsonVariable(domainName){
@@ -27,7 +43,7 @@ function JsonVariable(domainName){
 		Mapper=[	
 		{
 			property: "img",
-			selector: ".imgWrapper",
+			selector: ".innerPanel .mainImage .imgWrapper img",
 			attr: "data-src",
 			text: false
 		},
@@ -75,7 +91,7 @@ function JsonVariable(domainName){
 		{
 			property: "img",
 			// selector: '#imgTagWrapperId img',
-			selector:".a-button-text img",
+			selector:".a-spacing-small.item .a-list-item img",
 			attr: "src",
 			text: false
 		},
@@ -115,7 +131,7 @@ function JsonVariable(domainName){
 		Mapper=[
 		{
 			property: "img",
-			selector: '.images .blowup img',
+			selector: '.thumbs-scroll .thumbs img',
 			attr: 'src',
 			text: false
 		},
@@ -155,8 +171,8 @@ function JsonVariable(domainName){
 		Mapper=[
 		{
 			property: "img",
-			selector: '.imageview-slider li img',
-			attr: 'src',
+			selector: '#prdbig ul.imageview-slider li img',
+			attr: 'data-src-onload',
 			text: false
 		},
 		{
@@ -195,7 +211,7 @@ function JsonVariable(domainName){
 		Mapper=[
 		{
 			property: "img",
-			selector: '#mainImgHldr img#icImg',
+			selector: 'table.img .tdThumb img',
 			attr: 'src',
 			text: false
 		},
