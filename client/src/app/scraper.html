@@ -22,34 +22,34 @@
   <button type="submit" class="btn btn-primary">Submit</button>
   </div>
 </div>
+<!-- <iframe  name="iDetails" ng-model="formData.iDetails" width="100%" height="700px" ng-show="submitted"
+    ng-src="{{thisCanBeusedInsideNgBindHtml}}" sandbox seamless ng-bind-html-unsafe="{{thisCanBeusedInsideNgBindHtml}}"></iframe> -->
 <table ng-table="" class="table txt" ng-show="submitted">
-    <tr>
-    <th>Image</th>
-    <th>Title</th>
-    <th ng-hide="!products.rating">Rating</th>
-    <th ng-hide="!products.price">Price</th>
-    <th ng-hide="!products.sellingprice">Selling Price</th>
-    <th ng-hide="!products.discount">Discount</th>
-    </tr>
-    <tr>
-        <td data-title="'Image'"><img ng-src="{{products.img}}" width="150px" /></td>
-        <td data-title="'Title'">{{products.title}}</td>
-        <td data-title="'Rating'" ng-hide="!products.rating">{{products.rating}}</td>
-        <td data-title="'Price'" ng-hide="!products.price">{{products.price}}</td>
-        <td data-title="'Selling Price'" ng-hide="!products.sellingprice">{{products.sellingprice}}</td>
-        <td data-title="'Discount'" ng-hide="!products.discount">{{products.discount}}</td>
-    </tr>
+  <tr>
+  <th ng-repeat="(key, value) in products">{{key}}</th>
+  </tr>
+  <tr >
+  <td ng-repeat="(result, value) in products"> 
+  <div ng-if="result==='img'">
+    <div class="container slider" style="width:100px">
+    <img ng-repeat="slide in slides" class="slide slide-animation"
+        ng-hide="!isCurrentSlideIndex($index)" ng-src="{{slide}}">
+    </div>
+    <div slideshow>
+            <div slide ng-repeat="slide in slides"></div>
+    </div>
+  </div>   
+  <div ng-if="result!=='img'">
+  {{value}}
+  </div>    
+  </td>  
+  </tr> 
 </table>
-<!-- <div class="row" ng-show="submitted"><h3>Product Details:</h3></div>   -->
-<!-- <div width="100%" ng-bind-html="thisCanBeusedInsideNgBindHtml"></div> -->
-<!-- {{products.html}} -->
-<iframe  name="iDetails" ng-model="formData.iDetails" width="100%" height="700px" ng-show="submitted"
-    ng-src="{{thisCanBeusedInsideNgBindHtml}}" sandbox seamless ng-bind-html-unsafe="{{thisCanBeusedInsideNgBindHtml}}"></iframe>
+
 
 </form>
 </div>
 </div>
-<!-- </div> -->
 
 <style type="text/css">
 .error{
@@ -58,6 +58,9 @@
 .txt{
   float: left;
   width:50%;
+}
+img{
+  width:95px;
 }
 </style>
 
